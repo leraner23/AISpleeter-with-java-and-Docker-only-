@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Split The Muisc</title>
+</head>
+
+<body>
+<H3> Splitter AI </H3>
+<p>Split music into separated parts(Voice + Instruments) with AI-Powered algorithms </p>
+<form method="post" th:action="@{/api/spleeter/split}" enctype="multipart/form-data">
+
+<div>
+    <input type="file" name="Browse_my_file" required>
+<Button type="submit"> Submit </Button>
+</div>
+</form>
+
+<div th:if="${vocalsFile}">
+    <h2> Download the outputs</h2>
+    <a th:href="@{/api/spleeter/download(path=${vocalsFile})}">
+        <button>Download Vocals</button>
+    </a>
+
+    <a th:href="@{/api/spleeter/download(path=${instrumentsFile})}">
+        <button>Download Vocals</button>
+    </a>
+</div>
+</body>
+</html>
